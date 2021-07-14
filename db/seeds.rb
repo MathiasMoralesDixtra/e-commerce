@@ -3,5 +3,6 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# Product.create([{name: 'Zapatillas AirMax', description: 'Zapatillas confortables modelo clasico, ideales para pasear', price: 1500, quantity:20 }])
+
 #   Character.create(name: 'Luke', movie: movies.first)
