@@ -6,8 +6,15 @@
         <li class="nav-item">
             <%= link_to "Productos", products_url, class:"nav-link" %>
         </li>
+        <% if user_signed_in?%>
         <li class="nav-item">
             <%= link_to "Admin", product_admins_url, class:"nav-link" %>
         </li>
+        <%end%>
+        <% if user_signed_in?%>
+        <li class="nav-item">
+            <%= link_to "Logout", destroy_user_session_path, class:"nav-link", method: :delete%>
+        </li>
+        <%end%>
     </ul>
 </nav>
