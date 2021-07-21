@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
 
   scope :admin do 
-    resources :products_admin
+    resources :products, controller: :product_admins , as: :product_admins
   end
 end

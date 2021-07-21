@@ -1,0 +1,8 @@
+<div class="container">
+    <%= link_to product_admin_path do %>
+    <i class="bi bi-arrow-left-circle-fill"></i>
+    <% end %>
+    <h1>Editing Product Admin</h1>
+    <%= render 'form', product_admin: @product_admin, is_new:false %>
+
+</div>
