@@ -1,0 +1,29 @@
+<%= form_with model: current_user, url: profile_path(current_user), remote:false do |form| %>
+
+<div class="actions">
+    <div class="field">
+        <%=form.label :name %>
+        <%=form.text_field :name %>
+        <% @current_user.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    <div class="field">
+        <%=form.label :age %>
+        <%=form.text_field :age %>
+        <% @current_user.errors.full_messages_for(:age).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    <div class="field">
+        <%=form.label :email %>
+        <%=form.text_field :email %>
+        <% @current_user.errors.full_messages_for(:email).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    <div class="field">
+        <%= form.submit "Actualizar perfil"%>
+    </div>
+</div>
+<%end%>

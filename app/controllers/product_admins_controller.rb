@@ -1,6 +1,7 @@
 class ProductAdminsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy ]
   before_action :authenticate_user!
+  before_action :admin_only
 
 
   # GET /product_admins or /product_admins.json

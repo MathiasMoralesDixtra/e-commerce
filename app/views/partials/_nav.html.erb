@@ -7,6 +7,11 @@
         <li class="nav-item">
             <%= link_to "Admin", product_admins_url, class:"nav-link" %>
         </li>
+        <%end %>
+        <% if user_is_client? %>
+        <li class="nav-item">
+            <%= link_to "Perfil", profile_index_path, class:"nav-link" %>
+        </li>
         <%end%>
         <% if user_signed_in?%>
         <li class="nav-item">
