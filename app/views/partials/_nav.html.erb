@@ -1,12 +1,9 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <ul class="nav">
         <li class="nav-item">
-            <%= link_to "Inicio", root_path , class:"nav-link" %>
-        </li>
-        <li class="nav-item">
             <%= link_to "Productos", products_url, class:"nav-link" %>
         </li>
-        <% if user_signed_in?%>
+        <% if user_is_admin? %>
         <li class="nav-item">
             <%= link_to "Admin", product_admins_url, class:"nav-link" %>
         </li>
@@ -15,6 +12,9 @@
         <li class="nav-item">
             <%= link_to "Logout", destroy_user_session_path, class:"nav-link", method: :delete%>
         </li>
+        <%else%>
+            <%= link_to "Login", new_user_session_url, class:"nav-link"%>
+            <%= link_to "Sign up", new_user_registration_url, class:"nav-link"%>
         <%end%>
     </ul>
 </nav>
