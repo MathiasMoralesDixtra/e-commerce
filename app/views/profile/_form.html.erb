@@ -2,6 +2,13 @@
 
 <div class="actions">
     <div class="field">
+        <%=form.label :email %>
+        <%=form.text_field :email %>
+        <% @current_user.errors.full_messages_for(:email).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    <div class="field">
         <%=form.label :name %>
         <%=form.text_field :name %>
         <% @current_user.errors.full_messages_for(:name).each do |message| %>
@@ -15,13 +22,11 @@
         <div><%= message %></div>
         <% end %>
     </div>
+
     <div class="field">
-        <%=form.label :email %>
-        <%=form.text_field :email %>
-        <% @current_user.errors.full_messages_for(:email).each do |message| %>
-        <div><%= message %></div>
-        <% end %>
+        <%= link_to 'Cambiar contraseña', edit_user_registration_path %>
     </div>
+
     <div class="field">
         <%= form.submit "Actualizar perfil"%>
     </div>

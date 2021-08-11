@@ -2,7 +2,6 @@
 <% if product_admin.errors.any? %>
 <div id="error_explanation">
     <h2><%= pluralize(product_admin.errors.count, "error") %> prohibited this product_admin from being saved:</h2>
-
     <ul>
         <% product_admin.errors.each do |error| %>
         <li><%= error.full_message %></li>
@@ -45,6 +44,13 @@
         <%=form.number_field :quantity %>
         <% @product_admin.errors.full_messages_for(:quantity).each do |message| %>
         <div><%= message %></div>
+        <% end %>
+    </div>
+    <div class="field">
+        <%=form.label :image %>
+        <%=form.file_field :image,  accept: "image/*" %>
+        <% @product_admin.errors.full_messages_for(:image).each do |message| %>
+            <div><%= message %></div>
         <% end %>
     </div>
     <div class="field">
