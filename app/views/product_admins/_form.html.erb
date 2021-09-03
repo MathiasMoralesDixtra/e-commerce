@@ -54,6 +54,13 @@
         <% end %>
     </div>
     <div class="field">
+        <%=form.label :images %>
+        <%=form.file_field :images,  accept: "image/*", multiple:true %>
+        <% @product_admin.errors.full_messages_for(:images).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div class="field">
         <%= form.submit %>
     </div>
 </div>

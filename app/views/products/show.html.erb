@@ -5,10 +5,10 @@
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                         class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+                        <% @product.images.length.times do |index| %>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=index+1%>"
+                        aria-label="Slide <%=index%>"></button>
+                        <%end%>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -16,17 +16,16 @@
                             <%=image_tag @product.image, class:"d-block w-100" %>
                                 <%else%>
                                     <img src="https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_1280.jpg"
-                                        alt="..."  class="d-block w-100">
-                                <%end%>
+                                        alt="..." class="d-block w-100">
+                                    <%end%>
                     </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_1280.jpg"
-                            class="d-block w-100 " alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_1280.jpg"
-                            class="d-block w-100 " alt="...">
-                    </div>
+                    <%if @product.images.attached? %>
+                        <% @product.images.each do |item| %>
+                            <div class="carousel-item">
+                                <%=image_tag item, class:"d-block w-100" %>
+                            </div>
+                        <%end%>
+                    <%end%>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">

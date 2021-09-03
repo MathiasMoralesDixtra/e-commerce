@@ -67,6 +67,6 @@ class ProductAdminsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.fetch(:product, {}).permit(:name, :description, :price, :sale_price, :quantity, :image)
+      params.fetch(:product, {}).permit(:name, :description, :price, :sale_price, :quantity, :image, images:[])
     end
 end
