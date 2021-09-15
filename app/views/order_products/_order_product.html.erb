@@ -1,0 +1,15 @@
+<% product = order_product.product %>
+<div class="col mb-2">
+    <div class="card" style="width: 18rem;">
+    <%if product.image.attached? %>
+        <%=image_tag product.image, class:"card-img-top"  %>
+    <%else%>
+        <img src="https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_1280.jpg" alt="...">
+    <%end%>
+        <div class="card-body">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text"><%= product.description %></p>
+            <%= link_to "Ver producto", product, class:"btn btn-primary" %>
+        </div>
+    </div>
+</div>

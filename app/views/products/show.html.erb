@@ -5,9 +5,9 @@
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                         class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <% @product.images.length.times do |index| %>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%=index+1%>"
-                        aria-label="Slide <%=index%>"></button>
+                    <% @product.images.length.times do |index| %>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="<%=index+1%>" aria-label="Slide <%=index%>"></button>
                         <%end%>
                 </div>
                 <div class="carousel-inner">
@@ -24,8 +24,8 @@
                             <div class="carousel-item">
                                 <%=image_tag item, class:"d-block w-100" %>
                             </div>
-                        <%end%>
-                    <%end%>
+                            <%end%>
+                                <%end%>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">
@@ -54,10 +54,16 @@
                                         <%end %>
                                             <p class="h2 fw-normal">Stock: <%= @product.quantity %>
                                             </p>
-                                            <form>
+                                            <%= form_with model: @order_product, url: add_to_cart_orders_path,
+                                                remote:false do |form| %>
                                                 <div class="mb-3">
-                                                    <label class="form-label">Cantidad:</label>
-                                                    <input type="number" class="form-control" placeholder="1">
+                                                    <%=form.label :quantity, "Cantidad" %>
+                                                        <%=form.number_field :quantity, placeholder:"1",
+                                                            class:"form-control", min:1 %>
+                                                        <%=form.hidden_field :product_id, value:@product.id,
+                                                            class:"form-control" %>
+                                                        <%=form.hidden_field :unit_price, value:@product.sale_price || @product.price,
+                                                            class:"form-control"%>                                                            
                                                 </div>
                                                 <div class="form-check form-switch mb-3">
                                                     <input class="form-check-input" type="checkbox"
@@ -67,9 +73,9 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-primary"><i class="bi bi-cart"></i>
                                                     Agregar al carrito </button>
-                                                <button type="submit" class="btn btn-success w-20"><i
-                                                        class="bi bi-whatsapp"></i> Contactarse </button>
-                                            </form>
+                                                <%# <button type="submit" class="btn btn-success w-20"><i
+                                                        class="bi bi-whatsapp"></i> Contactarse </button> %>
+                                                <%end%>
         </div>
     </div>
 </div>

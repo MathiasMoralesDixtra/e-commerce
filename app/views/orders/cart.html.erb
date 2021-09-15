@@ -1,0 +1,5 @@
+<h1>Carrito</h1>
+<% @cart.order_products.each do |item| %>
+<p> <%=render item %> </p>
+<p> <%=item.quantity %></p>
+<%end%>
